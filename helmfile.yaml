@@ -1,6 +1,9 @@
 repositories:
   - name: parity
     url: https://paritytech.github.io/helm-charts/
+  - name: prometheus-community
+    url: https://prometheus-community.github.io/helm-charts
+
 
 helmDefaults:
   createNamespace: true
@@ -155,3 +158,11 @@ releases:
         secret:
           SUDO_SEED: "0xe5be9a5092b81bca64be81d212e7f2f9eba183bb7a90954f7b76361f6edb5c0a" # Alice
           VALIDATORS_ROOT_SEED: "test test test test test test test test test test test junk"
+
+  - name: kube-prometheus-stack
+    namespace: monitoring
+    chart: prometheus-community/kube-prometheus-stack
+    values:
+      - kube-prometheus-stack/values.yaml
+
+
